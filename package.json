@@ -1,0 +1,138 @@
+{
+	"name": "asciidoc-writing-helpers",
+	"displayName": "Asciidoc Writing Helpers",
+	"description": "Various commands to help write, edit, and revise Asciidoctor files",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.59.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:asciidoc-writing-helpers.writeOutNumbers",
+		"onCommand:asciidoc-writing-helpers.pasteWrapLink",
+		"onCommand:asciidoc-writing-helpers.keepTogether",
+		"onCommand:asciidoc-writing-helpers.makeRoman",
+		"onCommand:asciidoc-writing-helpers.wrapItalic",
+		"onCommand:asciidoc-writing-helpers.forceWrapItalic",
+		"onCommand:asciidoc-writing-helpers.forceWrapBold",
+		"onCommand:asciidoc-writing-helpers.forceWrapCode",
+		"onCommand:asciidoc-writing-helpers.wrapBold"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "asciidoc-writing-helpers.makeRoman",
+				"title": "Format selected text as roman (remove formatting) (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.wrapItalic",
+				"title": "Format selected text as italic (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.forceWrapItalic",
+				"title": "Force format selected text as italic (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.wrapBold",
+				"title": "Format selected text as bold (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.forceWrapBold",
+				"title": "Force format selected text as bold (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.forceWrapCode",
+				"title": "Force format selected text as code (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.keepTogether",
+				"title": "Wrap selected text with a .keep-together class (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.pasteWrapLink",
+				"title": "Wrap selected text with a clipboard text (for links!) (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.writeOutNumbers",
+				"title": "Write out numerals 1-9 (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "asciidoc-writing-helpers.wrapItalic",
+				"key": "ctrl+i",
+				"mac": "cmd+i",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.forceWrapItalic",
+				"key": "ctrl+shift+i",
+				"mac": "cmd+shift+i",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.wrapBold",
+				"key": "ctrl+b",
+				"mac": "cmd+b",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.forceWrapBold",
+				"key": "ctrl+shift+b",
+				"mac": "cmd+shift+b",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.keepTogether",
+				"key": "ctrl+shift+k",
+				"mac": "cmd+shift+k",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.pasteWrapLink",
+				"key": "ctrl+shift+l",
+				"mac": "cmd+shift+l",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "webpack",
+		"watch": "webpack --watch",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"test-compile": "tsc -p ./",
+		"test-watch": "tsc -watch -p ./",
+		"pretest": "npm run test-compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.59.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.2.2",
+		"@types/node": "14.x",
+		"eslint": "^7.27.0",
+		"@typescript-eslint/eslint-plugin": "^4.26.0",
+		"@typescript-eslint/parser": "^4.26.0",
+		"glob": "^7.1.7",
+		"mocha": "^8.4.0",
+		"typescript": "^4.3.2",
+		"vscode-test": "^1.5.2",
+		"ts-loader": "^9.2.2",
+		"webpack": "^5.38.1",
+		"webpack-cli": "^4.7.0"
+	}
+}

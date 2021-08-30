@@ -1,0 +1,37 @@
+// Place your key bindings in this file to override the defaults
+
+// code styles
+{
+    "key": "Cmd+shift+c",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus && editorLangId == html",
+    "args": {
+        "snippet": "<code>${TM_SELECTED_TEXT}</code>"
+    }
+},
+{ // things to do with links
+    "key": "Cmd+shift+x",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus && editorLangId == html",
+    "args": {
+        "snippet": "<a href='#${CLIPBOARD}' data-type='xref'>${CLIPBOARD}</a>"
+    }
+},
+{ // things to do with XREF links
+    "key": "Cmd+shift+l",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus && editorLangId == html",
+    "args": {
+        "snippet": "<a href='${CLIPBOARD}'>${TM_SELECTED_TEXT}</a>"
+    }
+},
+{ // casing shortcuts
+    "key": "Cmd+k Cmd+l",
+    "command": "editor.action.transformToLowercase"
+},
+{
+    "key": "Cmd+k Cmd+u",
+    "command": "editor.action.transformToUppercase"
+}
+
+]
