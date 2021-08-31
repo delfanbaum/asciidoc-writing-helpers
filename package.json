@@ -10,6 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
+		"onCommand:asciidoc-writing-helpers.codeblockPass",
 		"onCommand:asciidoc-writing-helpers.writeOutNumbers",
 		"onCommand:asciidoc-writing-helpers.pasteWrapLink",
 		"onCommand:asciidoc-writing-helpers.keepTogether",
@@ -66,6 +67,11 @@
 			{
 				"command": "asciidoc-writing-helpers.writeOutNumbers",
 				"title": "Write out numerals 1-9 (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.codeblockPass",
+				"title": "Take a [source, <lang>] codeblock and rewrite as passthrough (asciidoc)",
 				"when": "editorTextFocus && editorLangId == asciidoc"
 			}
 		],

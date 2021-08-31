@@ -150,8 +150,51 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 	context.subscriptions.push(writeOutNumbers);
 
-
-
+	let codeblockPass = vscode.commands.registerCommand('asciidoc-writing-helpers.codeblockPass', () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor && editor.selection){
+			const document = editor.document;
+			// some code
+			function langCheck(selText: string){
+				const select: string = selText;
+				const reg = /\[source,(.*?)\]/g;
+				const sourcematch = String(select.match(reg));
+				if (sourcematch !== null){
+					return sourcematch.slice(8,-1).trim();
+				} else {
+					return "";
+				}
+			} // end langCheck
+			function convert(selText: string, language: string){
+				const select = selText;
+				const open = `++++
+<pre data-type="programlisting" data-code-language="${language}">
+				`;
+				const close = `</pre>
+++++`;
+				const getCodeReg = /----+\n[\s\S]+----+/g;
+				var code = String(select.match(getCodeReg)).slice(4,-4);
+				// replace suspicious things
+				const ampCheck = /&(?!amp;|#)/g;
+				code = code.replace(ampCheck, '&amp;');
+				// replace < chars
+				const ltCheck = /<(?!lt)/g;
+				code = code.replace(ltCheck, '&lt;');
+				// replace > chars
+				const gtCheck = />(?!lt)/g;
+				code = code.replace(gtCheck, '&gt;');
+				return open + code + close;
+			}
+			editor.edit(editBuilder => {
+				editor.selections.forEach(sel => {
+					const selText = editor.document.getText(sel);
+					const language = langCheck(selText);
+					editBuilder.replace(sel, convert(selText, language));
+				});
+			});
+		}
+	});
+	context.subscriptions.push(codeblockPass);
 }
 // this method is called when your extension is deactivated
 export function deactivate() {}
