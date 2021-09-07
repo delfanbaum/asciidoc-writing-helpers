@@ -4,6 +4,22 @@ import { wrap } from 'module';
 import { env } from 'process';
 import * as vscode from 'vscode';
 
+
+function addRole(role: string){
+	const editor = vscode.window.activeTextEditor;
+	if (editor && editor.selection){
+		const document = editor.document;
+		editor.edit(editBuilder => {
+			editor.selections.forEach(sel => {
+				var text = editor.document.getText(sel);
+				const roleAddition = `[role="${role}"]\n`;
+				text = roleAddition + text;
+				editBuilder.replace(sel, text);
+			});
+		});
+	}
+}
+
 function formatText(marker: string){
 	const editor = vscode.window.activeTextEditor;
 	if (editor && editor.selection){
@@ -101,12 +117,19 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 	context.subscriptions.push(forceCode);
 
-	// command to force code
+	// command to keep a string together
 	let keepTogether = vscode.commands.registerCommand('asciidoc-writing-helpers.keepTogether', () => {
 			wrapWithClass('keep-together');
 		}
 	);
 	context.subscriptions.push(keepTogether);
+
+	// command to add a pagebreak less_space role
+	let pageBreakLessSpace = vscode.commands.registerCommand('asciidoc-writing-helpers.pageBreakLessSpace', () => {
+			addRole('pagebreak-before less_space');
+		}
+	);
+	context.subscriptions.push(pageBreakLessSpace);
 	
 	let pasteWrapLink = vscode.commands.registerCommand('asciidoc-writing-helpers.pasteWrapLink', () => {
 		vscode.env.clipboard.readText().then((clipboard) => {
@@ -195,6 +218,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 	context.subscriptions.push(codeblockPass);
+
 }
 // this method is called when your extension is deactivated
 export function deactivate() {}

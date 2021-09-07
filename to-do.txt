@@ -1,3 +1,9 @@
+TO DO:
+* make the cursor go to the center of empty font styles
+* make the cursor go to beginning of line before adding roles 
+
+
+
 // Place your key bindings in this file to override the defaults
 
 // code styles

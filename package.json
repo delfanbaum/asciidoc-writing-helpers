@@ -13,6 +13,7 @@
 		"onCommand:asciidoc-writing-helpers.codeblockPass",
 		"onCommand:asciidoc-writing-helpers.writeOutNumbers",
 		"onCommand:asciidoc-writing-helpers.pasteWrapLink",
+		"onCommand:asciidoc-writing-helpers.pageBreakLessSpace",
 		"onCommand:asciidoc-writing-helpers.keepTogether",
 		"onCommand:asciidoc-writing-helpers.makeRoman",
 		"onCommand:asciidoc-writing-helpers.wrapItalic",
@@ -52,6 +53,11 @@
 			{
 				"command": "asciidoc-writing-helpers.forceWrapCode",
 				"title": "Force format selected text as code (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.pageBreakLessSpace",
+				"title": "Add a pagebreak and less_space role to beginning of string (i.e., start at beginning of line) (asciidoc)",
 				"when": "editorTextFocus && editorLangId == asciidoc"
 			},
 			{
@@ -104,6 +110,12 @@
 				"command": "asciidoc-writing-helpers.keepTogether",
 				"key": "ctrl+shift+k",
 				"mac": "cmd+shift+k",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.pageBreakLessSpace",
+				"key": "ctrl+shift+j",
+				"mac": "cmd+shift+j",
 				"when": "editorTextFocus && editorLangId == asciidoc"
 			},
 			{
