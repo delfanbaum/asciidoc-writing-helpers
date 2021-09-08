@@ -68,6 +68,26 @@ function wrapWithClass(cls: string){
 	};
 };
 
+function addXrefPass(xrefstyle: string){
+	const editor = vscode.window.activeTextEditor;
+	if (editor && editor.selection){
+		const document = editor.document;
+		editor.edit(editBuilder => {
+			editor.selections.forEach(sel => {
+				const text = editor.document.getText(sel);
+				if (text.charAt(0) === "<" && text.charAt(text.length -1 ) === ">"){
+					const idlen = text.length - 4;
+					const id = text.substr(2, idlen);
+					const passthrough = `pass:[<a href="#${id}" data-type="xref" data-xrefstyle="${xrefstyle}">#${id}</a>]`;
+					editBuilder.replace(sel, passthrough);
+				} else {
+					vscode.window.showInformationMessage("Error: Not a valid xref; please select only the '<<>>' delimited xref.");
+				}
+			});
+		});
+	}
+}
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -130,6 +150,20 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	);
 	context.subscriptions.push(pageBreakLessSpace);
+
+	// command to add select:labelnumber xref passthrough
+	let selectLabelNumber = vscode.commands.registerCommand('asciidoc-writing-helpers.selectLabelNumber', () => {
+			addXrefPass('select:labelnumber');
+		}
+	);
+	context.subscriptions.push(selectLabelNumber);
+
+// command to add select:labelnumber xref passthrough
+	let selectChapNumTitle = vscode.commands.registerCommand('asciidoc-writing-helpers.selectChapNumTitle', () => {
+		addXrefPass('chap-num-title');
+		}
+	);
+	context.subscriptions.push(selectChapNumTitle);	
 
 	// command to add a pagebreak less_space role
 	let writeOutISBN = vscode.commands.registerCommand('asciidoc-writing-helpers.writeOutISBN', () => {
@@ -253,6 +287,57 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 	context.subscriptions.push(codeblockPass);
+
+	let ormHideURL = vscode.commands.registerCommand('asciidoc-writing-helpers.ormHideURL', () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor && editor.selection){
+			const document = editor.document;
+			editor.edit(editBuilder => {
+				editor.selections.forEach(sel => {
+					const text = editor.document.getText(sel);
+					const endURL = text.search(/\[/);
+					const endAnchor = text.length - 1;
+					const url = text.substring(0,endURL);
+					var anchorText = text.substring(endURL + 1, endAnchor);
+					if (anchorText.charAt(0) === "_" && 
+						anchorText.charAt(anchorText.length - 1) === "_"){
+							anchorText = "<em>" + anchorText.substring(1, anchorText.length - 1) + "</em>";
+					} else if (text.search(/oreilly.com\/library\/view/) !== -1){
+						anchorText = "<em>" + anchorText + "</em>";
+					}
+					const newLink = `pass:[<a href="${url}" class="orm:hideurl">${anchorText}</a>]`;
+					editBuilder.replace(sel, newLink);
+					});
+				});
+			}
+		}
+	);
+	context.subscriptions.push(ormHideURL);
+
+	let codePassLetterbreaks = vscode.commands.registerCommand('asciidoc-writing-helpers.codePassLetterbreaks', () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor && editor.selection){
+			const document = editor.document;
+			editor.edit(editBuilder => {
+				editor.selections.forEach(sel => {
+					const text = editor.document.getText(sel);
+					const regMatch = /(`|\+)/g; // fixed-width
+					const joiner = '&#x2060;';
+					if (/`|\+/.test(text.charAt(0)) && 
+						/`|\+/.test(text.charAt(text.length -1 ))){
+							var splitText = text.substring(1, text.length - 1).split('');
+							var brokenText = splitText.join(joiner);
+							var brokenTextStr = `pass:[<code>${brokenText}</code>]`;
+							editBuilder.replace(sel, brokenTextStr);
+						} else {
+							vscode.window.showInformationMessage("Error: Please select an inline code phrase to break.");
+						}
+					});
+				});
+			}
+		}
+	);
+	context.subscriptions.push(codePassLetterbreaks);
 
 }
 // this method is called when your extension is deactivated

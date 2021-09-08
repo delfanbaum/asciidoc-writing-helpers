@@ -10,7 +10,11 @@
 		"Other"
 	],
 	"activationEvents": [
+		"onCommand:asciidoc-writing-helpers.codePassLetterbreaks",
+		"onCommand:asciidoc-writing-helpers.selectLabelNumber",
+		"onCommand:asciidoc-writing-helpers.selectChapNumTitle",
 		"onCommand:asciidoc-writing-helpers.codeblockPass",
+		"onCommand:asciidoc-writing-helpers.ormHideURL",
 		"onCommand:asciidoc-writing-helpers.writeOutISBN",
 		"onCommand:asciidoc-writing-helpers.writeOutNumbers",
 		"onCommand:asciidoc-writing-helpers.pasteWrapLink",
@@ -79,6 +83,26 @@
 			{
 				"command": "asciidoc-writing-helpers.writeOutNumbers",
 				"title": "Write out numerals 1-9 (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.ormHideURL",
+				"title": "Add orm:hideurl link passthrough (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.selectLabelNumber",
+				"title": "Add 'select:labelnumber' xref passthrough (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.selectChapNumTitle",
+				"title": "Add 'chap-num-style' xref passthrough (asciidoc)",
+				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.codePassLetterbreaks",
+				"title": "Add letterbreaks and passthrough to inline code (asciidoc)",
 				"when": "editorTextFocus && editorLangId == asciidoc"
 			},
 			{
