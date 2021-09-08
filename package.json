@@ -38,7 +38,7 @@
 			},
 			{
 				"command": "asciidoc-writing-helpers.writeOutISBN",
-				"title": "Toggle ISBN having dashes (all languages)",
+				"title": "ISBN dashes toggle (all languages)",
 				"when": "editorTextFocus"
 			},
 			{
