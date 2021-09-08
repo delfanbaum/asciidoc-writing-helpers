@@ -130,6 +130,37 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	);
 	context.subscriptions.push(pageBreakLessSpace);
+
+	// command to add a pagebreak less_space role
+	let writeOutISBN = vscode.commands.registerCommand('asciidoc-writing-helpers.writeOutISBN', () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor && editor.selection){
+			const document = editor.document;
+			editor.edit(editBuilder => {
+				editor.selections.forEach(sel => {
+					var text = editor.document.getText(sel);
+					if (/[0-9]{13}/.test(text)){
+						// if it's not expanded, expand it
+						const a = text.slice(0,3);
+						const b = text.slice(3,4);
+						const c = text.slice(4,7);
+						const d = text.slice(7,12);
+						const e = text.slice(12,13);
+						const isbn = `${a}-${b}-${c}-${d}-${e}`;
+						editBuilder.replace(sel, isbn);
+					} else if (/[0-9]{3}\-[0-9]\-[0-9]{3}\-[0-9]{5}\-[0-9]/.test(text)) {
+						// if it is, unexpand it
+						text = text.replace(/\-/g, '');
+						editBuilder.replace(sel, text);
+					} else {
+						vscode.window.showInformationMessage("Error: not an ISBN-13.");
+					}
+				});
+			});
+		}
+	}
+	);
+	context.subscriptions.push(writeOutISBN);
 	
 	let pasteWrapLink = vscode.commands.registerCommand('asciidoc-writing-helpers.pasteWrapLink', () => {
 		vscode.env.clipboard.readText().then((clipboard) => {
@@ -139,8 +170,12 @@ export function activate(context: vscode.ExtensionContext) {
 				editor.edit(editBuilder => {
 					editor.selections.forEach(sel => {
 						var text = editor.document.getText(sel);
-						text = `${clipboard}[${text}]`;
-						editBuilder.replace(sel, text);
+						if (/htt(p|ps):\/\/(.*?)/.test(clipboard)){
+							text = `${clipboard}[${text}]`;
+							editBuilder.replace(sel, text);
+						} else {
+							vscode.window.showInformationMessage("Error: You tried to paste-wrap something other than a link.");
+						}
 					});
 				});
 			}

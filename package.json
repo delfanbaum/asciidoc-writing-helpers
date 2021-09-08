@@ -11,6 +11,7 @@
 	],
 	"activationEvents": [
 		"onCommand:asciidoc-writing-helpers.codeblockPass",
+		"onCommand:asciidoc-writing-helpers.writeOutISBN",
 		"onCommand:asciidoc-writing-helpers.writeOutNumbers",
 		"onCommand:asciidoc-writing-helpers.pasteWrapLink",
 		"onCommand:asciidoc-writing-helpers.pageBreakLessSpace",
@@ -34,6 +35,11 @@
 				"command": "asciidoc-writing-helpers.wrapItalic",
 				"title": "Format selected text as italic (asciidoc)",
 				"when": "editorTextFocus && editorLangId == asciidoc"
+			},
+			{
+				"command": "asciidoc-writing-helpers.writeOutISBN",
+				"title": "Toggle ISBN having dashes (all languages)",
+				"when": "editorTextFocus"
 			},
 			{
 				"command": "asciidoc-writing-helpers.forceWrapItalic",
