@@ -1,5 +1,7 @@
 {
 	"name": "asciidoc-writing-helpers",
+	"publisher": "delfanbaum",
+	"repository": "https://github.com/delfanbaum/asciidoc-writing-helpers",
 	"displayName": "Asciidoc Writing Helpers",
 	"description": "Various commands to help write, edit, and revise Asciidoctor files",
 	"version": "0.0.1",
