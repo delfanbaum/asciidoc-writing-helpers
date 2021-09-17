@@ -6,4 +6,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-- Initial release
+- Build out basic functionality and copy over (most) commands from old Atom init.coffee file
+
+## [0.0.1] - 2021-09-XX
+
+- Initial release to marketplace
