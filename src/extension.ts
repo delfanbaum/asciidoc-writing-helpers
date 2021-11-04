@@ -27,12 +27,31 @@ function formatText(marker: string){
 		editor.edit(editBuilder => {
 			editor.selections.forEach(sel => {
 				var text = editor.document.getText(sel);
+				var empty = false;
+				if (text === '') {var empty = true};
+				// do the replacement
 				if (text.substring(0,1) !== marker && text.substring(text.length, text.length +1) !== marker){
 					text = `${marker}${text}${marker}`;
 				} else {
 					text = text.substring(1, text.length -1);
 				}
 				editBuilder.replace(sel, text);
+				// if empty, move the cursor inbetween the markers
+				if (empty === true){
+					// have to do it twice b/c first is to clear selection
+					vscode.commands.executeCommand("cursorMove",
+						{
+							"to": "right",
+							"by": "character",
+							"value": 1
+						});
+					vscode.commands.executeCommand("cursorMove",
+						{
+							"to": "left",
+							"by": "character",
+							"value": 1
+						});
+					};
 			});
 		});
 	}
