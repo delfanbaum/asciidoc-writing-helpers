@@ -32,23 +32,7 @@ Current features include:
 ** Takes a code snippet (e.g., `com.oreilly.examples.this.that`) and adds letterbreaks, so you can fine-tune where it breaks across a line (e.g., pass:[<code>c&#x2060;o&#x2060;m&#x2060;.&#x2060;o&#x2060;r&#x2060;e&#x2060;i&#x2060;l&#x2060;l&#x2060;y&#x2060;.&#x2060;e&#x2060;x&#x2060;a&#x2060;m&#x2060;p&#x2060;l&#x2060;e&#x2060;s&#x2060;.&#x2060;t&#x2060;h&#x2060;i&#x2060;s&#x2060;.&#x2060;t&#x2060;h&#x2060;a&#x2060;t</code>])
 
 * Take a [source, <lang>] codeblock and rewrite as passthrough (asciidoc)
-** Takes a `[source, lang]` codeblock and rewrites it as an HTML passthrough, e.g., 
-    [source,javascript]
-    ----
-    function hello() {
-        console.log(Hello, World!)
-    }
-    ----
-
-    becomes
-
-    ++++
-    <pre data-type="programlisting" data-code-language="javascript">	
-    function hello() {
-        console.log(Hello, World!)
-    }
-    </pre>
-    ++++
+* Takes a `[source, lang]` codeblock and rewrites it as a fenced HTML passthrough.
 
 
 ## Known Issues
@@ -56,7 +40,7 @@ Current features include:
 Some known issues include:
 
 - No tests on code
-- Documentation needs love
+- Documentation needs work
 
 ## Release Notes
 
@@ -64,7 +48,7 @@ Users appreciate release notes as you update your extension.
 
 ### 0.0.1
 
-Initial release to the ORM Production team!
+Initial (internal) release!
 
 <!--
 ## Features
