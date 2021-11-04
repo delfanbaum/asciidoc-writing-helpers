@@ -14,22 +14,22 @@ Current features include:
 ** Formats selected text as roman
 
 * ISBN dashes toggle (all languages)
-** Adds (in the right place) or removes dashes from isbn13s
+    * Adds (in the right place) or removes dashes from isbn13s
 
 * Write out numerals 1-9 (asciidoc)
-** Takes "George steals 1 cookie from each of the 3 jars" and makes it "George steals one cookie from each of the three jars"
+    * Takes "George steals 1 cookie from each of the 3 jars" and makes it "George steals one cookie from each of the three jars"
 
 * Add orm:hideurl link passthrough (asciidoc)
-** Takes an asciidoc link (https://example.com[Anchor text]) and ass the `orm:hideurl` class to it as a passthrough (pass:[<a href="https://example.com" class="orm:hideurl">Anchor text</a>])
+    * Takes an asciidoc link (https://example.com[Anchor text]) and adds the `orm:hideurl` class to it as a passthrough (pass:[<a href="https://example.com" class="orm:hideurl">Anchor text</a>])
 
 * Add 'select:labelnumber' xref passthrough (asciidoc)
-** Take an asciidoc xref (e.g., <<chapter-99>>) and adds the `select:labelnumber` xref-datatype attribute (e.g., pass:[<a href="#chapter-99" data-type="xref" data-xrefstyle="select:labelnumber">#chapter-99</a>])
+    * Take an asciidoc xref (e.g., <<chapter-99>>) and adds the `select:labelnumber` xref-datatype attribute (e.g., pass:[<a href="#chapter-99" data-type="xref" data-xrefstyle="select:labelnumber">#chapter-99</a>])
 
 * Add 'chap-num-style' xref passthrough (asciidoc)
-** Take an asciidoc xref (e.g., <<chapter-99>>) and adds the `chap-num-style` xref-datatype attribute (e.g., pass:[<a href="#chapter-99" data-type="xref" data-xrefstyle="chap-num-title">#chapter-99</a>])
+    * Take an asciidoc xref (e.g., <<chapter-99>>) and adds the `chap-num-style` xref-datatype attribute (e.g., pass:[<a href="#chapter-99" data-type="xref" data-xrefstyle="chap-num-title">#chapter-99</a>])
 
 * Add letterbreaks and passthrough to inline code (asciidoc)
-** Takes a code snippet (e.g., `com.oreilly.examples.this.that`) and adds letterbreaks, so you can fine-tune where it breaks across a line (e.g., pass:[<code>c&#x2060;o&#x2060;m&#x2060;.&#x2060;o&#x2060;r&#x2060;e&#x2060;i&#x2060;l&#x2060;l&#x2060;y&#x2060;.&#x2060;e&#x2060;x&#x2060;a&#x2060;m&#x2060;p&#x2060;l&#x2060;e&#x2060;s&#x2060;.&#x2060;t&#x2060;h&#x2060;i&#x2060;s&#x2060;.&#x2060;t&#x2060;h&#x2060;a&#x2060;t</code>])
+    * Takes a code snippet (e.g., `com.oreilly.examples.this.that`) and adds letterbreaks, so you can fine-tune where it breaks across a line (e.g., pass:[<code>c&#x2060;o&#x2060;m&#x2060;.&#x2060;o&#x2060;r&#x2060;e&#x2060;i&#x2060;l&#x2060;l&#x2060;y&#x2060;.&#x2060;e&#x2060;x&#x2060;a&#x2060;m&#x2060;p&#x2060;l&#x2060;e&#x2060;s&#x2060;.&#x2060;t&#x2060;h&#x2060;i&#x2060;s&#x2060;.&#x2060;t&#x2060;h&#x2060;a&#x2060;t</code>])
 
 * Take a [source, <lang>] codeblock and rewrite as passthrough (asciidoc)
 * Takes a `[source, lang]` codeblock and rewrites it as a fenced HTML passthrough.
