@@ -28,7 +28,7 @@ function formatText(marker: string){
 			editor.selections.forEach(sel => {
 				var text = editor.document.getText(sel);
 				var empty = false;
-				if (text === '') {var empty = true};
+				if (text === '') {var empty = true;};
 				// do the replacement
 				if (text.substring(0,1) !== marker && text.substring(text.length, text.length +1) !== marker){
 					text = `${marker}${text}${marker}`;
