@@ -31,7 +31,6 @@ Current features include:
 * Add letterbreaks and passthrough to inline code (asciidoc)
     * Takes a code snippet (e.g., `com.oreilly.examples.this.that`) and adds letterbreaks, so you can fine-tune where it breaks across a line (e.g., `pass:[<code>c&#x2060;o&#x2060;m&#x2060;.&#x2060;o&#x2060;r&#x2060;e&#x2060;i&#x2060;l&#x2060;l&#x2060;y&#x2060;.&#x2060;e&#x2060;x&#x2060;a&#x2060;m&#x2060;p&#x2060;l&#x2060;e&#x2060;s&#x2060;.&#x2060;t&#x2060;h&#x2060;i&#x2060;s&#x2060;.&#x2060;t&#x2060;h&#x2060;a&#x2060;t</code>]`)
 
-* Take a `[source, <lang>]` codeblock and rewrite as passthrough (asciidoc)
 * Takes a `[source, lang]` codeblock and rewrites it as a fenced HTML passthrough.
 
 
