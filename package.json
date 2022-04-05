@@ -4,7 +4,7 @@
 	"repository": "https://github.com/delfanbaum/asciidoc-writing-helpers",
 	"displayName": "Asciidoc Writing Helpers",
 	"description": "Various commands to help write, edit, and revise Asciidoctor files",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.59.0"
 	},
@@ -104,7 +104,7 @@
 			},
 			{
 				"command": "asciidoc-writing-helpers.codePassLetterbreaks",
-				"title": "Add letterbreaks and passthrough to inline code (asciidoc)",
+				"title": "Add passthrough to inline code so manual breaks ('&#x200b') may be added (asciidoc)",
 				"when": "editorTextFocus && editorLangId == asciidoc"
 			},
 			{

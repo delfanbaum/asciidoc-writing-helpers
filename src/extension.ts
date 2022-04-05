@@ -341,7 +341,7 @@ export function activate(context: vscode.ExtensionContext) {
 				editor.selections.forEach(sel => {
 					const text = editor.document.getText(sel);
 					const regMatch = /(`|\+)/g; // fixed-width
-					const joiner = '&#x2060;';
+					const joiner = ''; // note remove this since it causes odd breaks in the epub
 					if (/`|\+/.test(text.charAt(0)) && 
 						/`|\+/.test(text.charAt(text.length -1 ))){
 							var splitText = text.substring(1, text.length - 1).split('');

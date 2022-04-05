@@ -29,7 +29,7 @@ Current features include:
     * Take an asciidoc xref (e.g., `<<chapter-99>>`) and adds the `chap-num-style` xref-datatype attribute (e.g., `pass:[<a href="#chapter-99" data-type="xref" data-xrefstyle="chap-num-title">#chapter-99</a>]`)
 
 * Add letterbreaks and passthrough to inline code (asciidoc)
-    * Takes a code snippet (e.g., `com.oreilly.examples.this.that`) and adds letterbreaks, so you can fine-tune where it breaks across a line (e.g., `pass:[<code>c&#x2060;o&#x2060;m&#x2060;.&#x2060;o&#x2060;r&#x2060;e&#x2060;i&#x2060;l&#x2060;l&#x2060;y&#x2060;.&#x2060;e&#x2060;x&#x2060;a&#x2060;m&#x2060;p&#x2060;l&#x2060;e&#x2060;s&#x2060;.&#x2060;t&#x2060;h&#x2060;i&#x2060;s&#x2060;.&#x2060;t&#x2060;h&#x2060;a&#x2060;t</code>]`)
+    * Takes a code snippet (e.g., `com.oreilly.examples.this.that`) and puts it in a passthrough so you can fine-tune where it breaks across a line (e.g., `pass:[<code>com.oreilly.&#x200b;examples.this.that</code>]`)
 
 * Takes a `[source, lang]` codeblock and rewrites it as a fenced HTML passthrough.
 
@@ -44,6 +44,10 @@ Some known issues include:
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
+
+### 0.1.0
+
+Initial public release!
 
 ### 0.0.1
 
