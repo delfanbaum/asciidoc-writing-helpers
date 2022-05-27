@@ -47,6 +47,10 @@ Some known issues include:
 
 Users appreciate release notes as you update your extension.
 
+### 0.1.1 
+
+Cleanup some cruft.
+
 ### 0.1.0
 
 Initial public release!

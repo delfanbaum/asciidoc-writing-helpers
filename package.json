@@ -4,7 +4,7 @@
 	"repository": "https://github.com/delfanbaum/asciidoc-writing-helpers",
 	"displayName": "Asciidoc Writing Helpers",
 	"description": "Various commands to help write, edit, and revise Asciidoctor files",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"engines": {
 		"vscode": "^1.59.0"
 	},
